@@ -35,7 +35,7 @@ class Animator {
     //#####  ANIMATIONS  #####
 
     //Fades towards a bright level
-      void fade(int brightness, int panel) {
+      void fade(int panel,int brightness) {
       if (brightness > panelBrightness[panel]) {
         if  (panelBrightness[panel] < 255) {
           panelBrightness[panel]++;
