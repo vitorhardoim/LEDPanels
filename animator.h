@@ -27,8 +27,9 @@ class Animator {
     //Updates color and brightness of a panel
     void updatePanelColor(int panel, int color = -1, int sat = -1, int brightness = -1) {
       for(int i = panel * LEDsPerPanel; i < panel * LEDsPerPanel + (LEDsPerPanel - 1); i++ ){
-       if(color != -1){
-        leds[i] = HSV(color, sat, panelBrightness[panel]);
+        if(color != -1){
+          leds[i] = CHSV(color, sat, panelBrightness[panel]);
+        }
       }
     }
 

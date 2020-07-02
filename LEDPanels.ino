@@ -8,7 +8,6 @@
 #include "blynkController.h"
 #include <BlynkSimpleEsp8266.h>
 
-
 Animator anim(LEDS_IN_PANEL, NUM_PANELS);
 
 char auth[] = "h4IPfFLa4xnlSAaKL4vurCz3Or8_dDr7"; //Codigo Blynk do projeto
@@ -20,8 +19,12 @@ char pass[] = "CARLOSVCSD22";
 void setup() {
   Serial.begin(9600);
   Blynk.begin(auth, ssid, pass, IPAddress(192, 168, 0, 6), 8080);
-
+  
   anim.startAnimator();
+  anim.updatePanelColor(0,0,0,0);
+  anim.updatePanelColor(1,0,0,0);
+  anim.updatePanelColor(2,0,0,0);
+  anim.updatePanelColor(3,0,0,0);
 
   FastLED.clear();  // clear all pixel data
   FastLED.show();
@@ -30,10 +33,10 @@ void setup() {
 void loop() {
   Blynk.run();
 
-  anim.updatePanelColor(0, 125);
-  anim.updatePanelColor(1, 125);
-  anim.updatePanelColor(2, 125);
-  anim.updatePanelColor(3, 125);
+  anim.fade(0,255);
+  anim.fade(1,255);
+  anim.fade(2,255);
+  anim.fade(3,255);
 
   FastLED.show();
 }
