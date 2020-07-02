@@ -43,4 +43,4 @@ class Animator{
       }
       updatePanelColor(panelNumber, CHSV( hue, sat, panelBrightness[panelNumber]));
     }
-}
+};

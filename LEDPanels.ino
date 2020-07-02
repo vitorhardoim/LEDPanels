@@ -1,3 +1,5 @@
+#include <FastLED.h>
+#include <ESP8266WiFi.h>
 #define LED_TYPE NEOPIXEL
 #define DATA_PIN 13
 #define LEDS_IN_PANEL 12
@@ -5,8 +7,7 @@
 #include "animator.h"
 #include "blynkController.h"
 #include <BlynkSimpleEsp8266.h>
-#include <FastLED.h>
-#include <ESP8266WiFi.h>
+
 
 Animator anim(LEDS_IN_PANEL, NUM_PANELS);
 
