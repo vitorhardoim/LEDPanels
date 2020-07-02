@@ -29,11 +29,11 @@ void setup() {
 
 void loop() {
   Blynk.run();
-/*
-  anim.fade(125, 1, 255, 255);
-  anim.fade(125, 2, 255, 255);
-  anim.fade(125, 3, 255, 255);
-  anim.fade(125, 0, 255, 255);
-  /**/
+
+  anim.updatePanelColor(0, 125);
+  anim.updatePanelColor(1, 125);
+  anim.updatePanelColor(2, 125);
+  anim.updatePanelColor(3, 125);
+
   FastLED.show();
 }

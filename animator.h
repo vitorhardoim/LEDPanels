@@ -7,15 +7,16 @@ class Animator {
     int LEDsPerPanel;
     int numPanels;
     int totalLEDs;
-    CRGB panels[numPanels];
+    //CRGB panels[numPanels];
     CRGB *leds;
-    int panelBrightness[numPanels];
+    int *panelBrightness;
 
     Animator(int nLedsPerPanel, int nPanels) {
       LEDsPerPanel = nLedsPerPanel;
       numPanels = nPanels;
       totalLEDs = numPanels * LEDsPerPanel;
       leds = new CRGB[totalLEDs];
+      panelBrightness = new int[numPanels];
     }
 
     //Buildup everything required by fastLED lib
@@ -24,7 +25,7 @@ class Animator {
     }
 
     //Updates color and brightness of a panel
-    void updatePanelColor(int panel, CHSV color, int brightness) {
+    void updatePanelColor(int panel, int brightness) {
       for(int i = panel * LEDsPerPanel; i < panel * LEDsPerPanel + (LEDsPerPanel - 1); i++ ){
        leds[i].setRGB(0,255,250);
        leds[i].fadeLightBy(brightness);
