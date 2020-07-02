@@ -1,4 +1,5 @@
-BLYNK_WRITE(V1)   //Escolhe o painel painel
+/*
+ BLYNK_WRITE(V1)   //Escolhe o painel painel
 {
   numero = param.asInt() - 2;
 }
@@ -29,3 +30,4 @@ BLYNK_WRITE(V5) // velocidade
 {
   velocidade = param.asInt();
 }
+/**/
