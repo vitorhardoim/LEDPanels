@@ -25,29 +25,29 @@ class Animator {
     }
 
     //Updates color and brightness of a panel
-    void updatePanelColor(int panel, int brightness) {
+    void updatePanelColor(int panel, int r = -1, int g = -1, int b = -1) {
       for(int i = panel * LEDsPerPanel; i < panel * LEDsPerPanel + (LEDsPerPanel - 1); i++ ){
-       leds[i].setRGB(0,255,250);
-       leds[i].fadeLightBy(brightness);
+       if(r != -1){
+        leds[i].setRGB(r,g,b);
+       }
+       leds[i].fadeLightBy(panelBrightness[panel]);
       }
     }
 
     //#####  ANIMATIONS  #####
 
     //Fades towards a bright level
-    /*
-      void fade(int brightness, int panelNumber, int hue, int sat) {
-      if (brightness > panelBrightness[panelNumber]) {
-        if  (panelBrightness[panelNumber] < 255) {
-          panelBrightness[panelNumber]++;
+      void fade(int brightness, int panel) {
+      if (brightness > panelBrightness[panel]) {
+        if  (panelBrightness[panel] < 255) {
+          panelBrightness[panel]++;
         }
       }
       else {
-        if  (panelBrightness[panelNumber] > 0) {
-          panelBrightness[panelNumber]--;
+        if  (panelBrightness[panel] > 0) {
+          panelBrightness[panel]--;
         }
       }
-      updatePanelColor(panelNumber, CHSV( hue, sat, panelBrightness[panelNumber]));
+      updatePanelColor(panel);
       }
-      /**/
 };
