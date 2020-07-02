@@ -9,6 +9,7 @@
 #include <BlynkSimpleEsp8266.h>
 
 Animator anim(LEDS_IN_PANEL, NUM_PANELS);
+BlynkController blynk;
 
 char auth[] = "h4IPfFLa4xnlSAaKL4vurCz3Or8_dDr7"; //Codigo Blynk do projeto
 // Your WiFi credentials.
@@ -33,10 +34,10 @@ void setup() {
 void loop() {
   Blynk.run();
 
-  anim.fade(0,255);
-  anim.fade(1,255);
-  anim.fade(2,255);
-  anim.fade(3,255);
+  anim.fade(0, blynk.brightness);
+  anim.fade(1, blynk.brightness);
+  anim.fade(2, blynk.brightness);
+  anim.fade(3, blynk.brightness);
 
   FastLED.show();
 }

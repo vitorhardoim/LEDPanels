@@ -1,33 +1,35 @@
-/*
- BLYNK_WRITE(V1)   //Escolhe o painel painel
-{
-  numero = param.asInt() - 2;
-}
+#include <BlynkSimpleEsp8266.h>
 
-BLYNK_WRITE(V2) // Brilho
-{
-  blynkBright = param.asInt();
-}
+class BlynkController{
+  public:
+    int panel;
+    int brightness;
+    CHSV HSV;
+    int startButton;
+    int speedVar;
 
-BLYNK_WRITE(V3)   //Cor RGB
-{
-  r = param[0].asInt();
-  g = param[1].asInt();
-  b = param[2].asInt();
+    BLYNK_WRITE(V1)   //Escolhe o painel painel
+    {
+      panel = param.asInt() - 2;
+    }
+    
+    BLYNK_WRITE(V2) // Brilho
+    {
+      brightness = param.asInt();
+    }
+    
+    BLYNK_WRITE(V3)   //Cor RGB
+    {
+      HSV = rgb2hsv_approximate(CRGB(param[0].asInt(), param[1].asInt(), param[2].asInt()));
+    }
+    
+    BLYNK_WRITE(V4)  //on  - off
+    {
+      startButton = param.asInt();
+    }
 
-  cor = rgb2hsv_approximate(CRGB(r, g, b));
-}
-
-BLYNK_WRITE(V4)  //on  - off
-{
-  onButton = param.asInt();
-  if (onButton) {
-    startingSequence = 1;
-  }
-}
-
-BLYNK_WRITE(V5) // velocidade
-{
-  velocidade = param.asInt();
-}
-/**/
+    BLYNK_WRITE(V5) // velocidade
+    {
+      speedVar = param.asInt();
+    }
+};
