@@ -25,12 +25,10 @@ class Animator {
     }
 
     //Updates color and brightness of a panel
-    void updatePanelColor(int panel, int r = -1, int g = -1, int b = -1) {
+    void updatePanelColor(int panel, int color = -1, int sat = -1, int brightness = -1) {
       for(int i = panel * LEDsPerPanel; i < panel * LEDsPerPanel + (LEDsPerPanel - 1); i++ ){
-       if(r != -1){
-        leds[i].setRGB(r,g,b);
-       }
-       leds[i].fadeLightBy(panelBrightness[panel]);
+       if(color != -1){
+        leds[i] = HSV(color, sat, panelBrightness[panel]);
       }
     }
 
