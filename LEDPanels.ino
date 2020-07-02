@@ -21,10 +21,10 @@ void setup() {
   Blynk.begin(auth, ssid, pass, IPAddress(192, 168, 0, 6), 8080);
   
   anim.startAnimator();
-  anim.updatePanelColor(0,0,0,0);
-  anim.updatePanelColor(1,0,0,0);
-  anim.updatePanelColor(2,0,0,0);
-  anim.updatePanelColor(3,0,0,0);
+  anim.updatePanelColor(0, CHSV(0,0,0));
+  anim.updatePanelColor(1, CHSV(0,0,0));
+  anim.updatePanelColor(2, CHSV(0,0,0));
+  anim.updatePanelColor(3, CHSV(0,0,0));
 
   FastLED.clear();  // clear all pixel data
   FastLED.show();

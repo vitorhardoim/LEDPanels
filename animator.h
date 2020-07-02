@@ -9,14 +9,16 @@ class Animator {
     int totalLEDs;
     //CRGB panels[numPanels];
     CRGB *leds;
-    int *panelBrightness;
+    CHSV *panelHSV;
+    //int *panelBrightness;
 
     Animator(int nLedsPerPanel, int nPanels) {
       LEDsPerPanel = nLedsPerPanel;
       numPanels = nPanels;
       totalLEDs = numPanels * LEDsPerPanel;
       leds = new CRGB[totalLEDs];
-      panelBrightness = new int[numPanels];
+      panelHSV = new CHSV[numPanels];
+      //panelBrightness = new int[numPanels];
     }
 
     //Buildup everything required by fastLED lib
@@ -25,11 +27,9 @@ class Animator {
     }
 
     //Updates color and brightness of a panel
-    void updatePanelColor(int panel, int color = -1, int sat = -1, int brightness = -1) {
+    void updatePanelColor(int panel, CHSV HSV) {
       for(int i = panel * LEDsPerPanel; i < panel * LEDsPerPanel + (LEDsPerPanel - 1); i++ ){
-        if(color != -1){
-          leds[i] = CHSV(color, sat, panelBrightness[panel]);
-        }
+        leds[i] = HSV;
       }
     }
 
@@ -37,16 +37,16 @@ class Animator {
 
     //Fades towards a bright level
       void fade(int panel,int brightness) {
-      if (brightness > panelBrightness[panel]) {
-        if  (panelBrightness[panel] < 255) {
-          panelBrightness[panel]++;
+      if (brightness > panelHSV[panel].val) {
+        if  (panelHSV[panel].val < 255) {
+          panelHSV[panel].val++;
         }
       }
       else {
-        if  (panelBrightness[panel] > 0) {
-          panelBrightness[panel]--;
+        if  (panelHSV[panel].val > 0) {
+          panelHSV[panel].val--;
         }
       }
-      updatePanelColor(panel);
+      updatePanelColor(panel, panelHSV[panel]);
       }
 };
